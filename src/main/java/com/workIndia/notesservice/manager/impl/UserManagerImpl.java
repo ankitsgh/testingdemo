@@ -36,8 +36,8 @@ public class UserManagerImpl implements UserManager {
     public String login(UserEntry userEntry) throws Exception {
 
         UserEntity userEntity = convertUserEntryToEntity(userEntry);
-        if(userRepository.login(userEntry.getUserName(), userEntry.getPassword()).getId() != null){
-
+        UserEntity userEntity1 = userRepository.login(userEntry.getUserName(), userEntry.getPassword());
+        if(userEntity1 != null && userEntity1.getId() != null){
             return "Success";
         }else{
             return "fail";
